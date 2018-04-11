@@ -12,14 +12,18 @@ class saveTrackingData implements ObserverInterface
 
     protected $_trackingHelper;
 
+    protected $_cookieManager;
+
     public function __construct(
         \Magento\Framework\ObjectManagerInterface $objectManager,
         \Psr\Log\LoggerInterface $logger,
-        trackingHelper $_trackingHelper
+        trackingHelper $_trackingHelper,
+        \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager
     )
     {
         $this->_trackingHelper = $_trackingHelper;
         $this->_objectManager   = $objectManager;
+        $this->_cookieManager = $cookieManager;
         $this->logger = $logger;
     }
 

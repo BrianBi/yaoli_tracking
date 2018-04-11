@@ -36,7 +36,7 @@ class Cj extends Action
 		{
 			/*$metadata = $this->_cookieMetadataFactory->createPublicCookieMetadata()->setDuration($_helper->getCookieExpired());
 			$this->_cookieManager->setPublicCookie($_helper->getCookieName(), 'cj', $metadata);*/
-			setcookie($_helper->getCookieName(), 'cj', $_helper->getCookieExpired());
+			setcookie($_helper->getCookieName(), 'cj', time() + $_helper->getCookieExpired(), '/');
 		}
 		
 		return $this->getResponse()->setRedirect($this->_redirect->getRedirectUrl($_urlStr));
