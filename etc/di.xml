@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <virtualType name="YaoliTrackingGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="YaoliTrackingTrackorderGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Yaoli\Tracking\Model\ResourceModel\Trackorder\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">YaoliTrackingGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="yaoli_tracking_trackorder_listing_data_source" xsi:type="string">Yaoli\Tracking\Model\ResourceModel\Trackorder\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Yaoli\Tracking\Model\ResourceModel\Trackorder\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">yaoli_order_tracking</argument>
+            <!-- <argument name="eventPrefix" xsi:type="string">yaoli_tracking_trackorder_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">trackorder_grid_collection</argument> -->
+            <argument name="resourceModel" xsi:type="string">Yaoli\Tracking\Model\ResourceModel\Trackorder</argument>
+        </arguments>
+    </type>
+</config>

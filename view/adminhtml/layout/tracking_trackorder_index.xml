@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceBlock name="menu">
+            <action method="setActive">
+                <argument name="itemId" xsi:type="string">Yaoli_Tracking::Trackorder</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="page.title">
+            <action method="setTitleClass">
+                <argument name="class" xsi:type="string">complex</argument>
+            </action>
+        </referenceBlock>
+
+        <referenceContainer name="content">
+            <!--<uiComponent name="yaoli_sendorder_quenelist_listing"/>-->
+            <block class="Yaoli\Tracking\Block\Adminhtml\Trackorder" name="tracking_trackorder_grid">
+                <block class="Magento\Backend\Block\Widget\Grid" name="tracking_trackorder_grid.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">id</argument>
+                        <argument name="dataSource" xsi:type="object">Yaoli\Tracking\Model\ResourceModel\Trackorder\Collection</argument>
+                        <argument name="default_sort" xsi:type="string">id</argument>
+                        <argument name="default_dir" xsi:type="string">ASC</argument>
+                        <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="tracking_trackorder_grid.grid.columnSet" as="grid.columnSet">
+                        <!-- <arguments>
+                            <argument name="rowUrl" xsi:type="array">
+                                <item name="path" xsi:type="string">*/*/edit</item>
+                            </argument>
+                        </arguments> -->
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">ID</argument>
+                                <argument name="index" xsi:type="string">id</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_platform">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">PlateForm</argument>
+                                <argument name="index" xsi:type="string">tracking_platform</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_order_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">IncrementId</argument>
+                                <argument name="index" xsi:type="string">tracking_order_id</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_action_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Action ID</argument>
+                                <argument name="index" xsi:type="string">tracking_action_id</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_sku">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">SKU</argument>
+                                <argument name="index" xsi:type="string">tracking_sku</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_total_qty">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">QTY</argument>
+                                <argument name="index" xsi:type="string">tracking_total_qty</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_total_money">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Money</argument>
+                                <argument name="index" xsi:type="string">tracking_total_money</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_discount">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Discount</argument>
+                                <argument name="index" xsi:type="string">tracking_discount</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_currency">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Currency</argument>
+                                <argument name="index" xsi:type="string">tracking_currency</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_source">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Source</argument>
+                                <argument name="index" xsi:type="string">tracking_source</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_coupon">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Coupon</argument>
+                                <argument name="index" xsi:type="string">tracking_coupon</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="tracking_created_at">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Created Time</argument>
+                                <argument name="index" xsi:type="string">tracking_created_at</argument>
+                                <argument name="type" xsi:type="string">date</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
