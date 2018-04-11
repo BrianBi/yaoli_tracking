@@ -11,14 +11,18 @@ class Tag extends AbstractHelper
 
     protected $storeManager;
 
+    protected $_cookieManager;
+
     public function __construct(
         Context $context,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\ObjectManagerInterface $objectManager
+        \Magento\Framework\ObjectManagerInterface $objectManager,
+        \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager
     )
     {
         $this->_objectManager = $objectManager;
         $this->storeManager   = $storeManager;
+        $this->_cookieManager = $cookieManager;
         parent::__construct($context);
     }
 
@@ -28,7 +32,7 @@ class Tag extends AbstractHelper
 		if ($_platform == '')
 			$_platform = $this->scopeConfig->getValue('tracking/general/cookie_name');
 
-		if (!$orderId) exit('No plateform...');
+		if (!$orderId || !$this->_cookieManager->getCookie('affiliateplus_map_index')) exit('No plateform...');
 
 		$_order  = $_order = $this->_objectManager->create('Magento\Sales\Model\Order')->loadByIncrementId($orderId);
 
