@@ -34,8 +34,9 @@ class Cj extends Action
 
 		if ($_helper->getTrackingEnable())
 		{
-			$metadata = $this->_cookieMetadataFactory->createPublicCookieMetadata()->setDuration($_helper->getCookieExpired());
-			$this->_cookieManager->setPublicCookie($_helper->getCookieName(), 'cj', $metadata);
+			/*$metadata = $this->_cookieMetadataFactory->createPublicCookieMetadata()->setDuration($_helper->getCookieExpired());
+			$this->_cookieManager->setPublicCookie($_helper->getCookieName(), 'cj', $metadata);*/
+			setcookie($_helper->getCookieName(), 'cj', $_helper->getCookieExpired());
 		}
 		
 		return $this->getResponse()->setRedirect($this->_redirect->getRedirectUrl($_urlStr));
